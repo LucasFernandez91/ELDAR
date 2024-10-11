@@ -1,0 +1,46 @@
+<div class="flex justify-content-center align-items-center min-h-screen">
+    <p-card header="Registrate" [style]="{width:'400px'}">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="field">
+          <label for="fullName">Nombre Completo</label>
+          <input type="text" pInputText class="w-full" id="fullName" formControlName="fullName">
+          <small *ngIf="isInvalid('fullName')" class="block p-error">
+            El nombre completo es requerido.
+          </small>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input pInputText class="w-full" id="email" formControlName="email">
+          <small *ngIf="isInvalid('email')" class="block p-error">
+            <span *ngIf="email?.hasError('required')">Email es requerido.</span>
+            <span *ngIf="email?.hasError('pattern')">Email no es válido.</span>
+          </small>
+        </div>
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <p-password formControlName="password" [feedback]="false" [toggleMask]="true" inputId="password" inputStyleClass="w-full" styleClass="w-full" />
+          <small *ngIf="isInvalid('password')" class="block p-error">
+            La contraseña es requerida y debe tener al menos 6 caracteres.
+          </small>
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Confirmar Contraseña</label>
+          <p-password formControlName="confirmPassword" [feedback]="false" [toggleMask]="true" inputId="confirmPassword" inputStyleClass="w-full" styleClass="w-full" />
+          <small *ngIf="isInvalid('confirmPassword')" class="block p-error">
+            La confirmación de la contraseña es requerida.
+          </small>
+          <small *ngIf="registerForm.errors && registerForm.errors['passmisMatch'] && (password?.touched || confirmPassword?.touched)" class="block p-error">
+            Las contraseñas no coinciden.
+          </small>
+
+
+        </div>
+  
+        <p-button type="submit" styleClass="w-full" label="Registrar" [disabled]="registerForm.invalid"></p-button>
+        <div class="mt-4">
+            Ya tienes una cuenta? <a [routerLink]="['/login']">Inicia Sesión</a>
+        </div>
+      </form>
+    </p-card>
+  </div>
+  

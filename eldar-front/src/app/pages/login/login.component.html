@@ -1,0 +1,44 @@
+<div class="flex justify-content-center align-items-center min-h-screen">
+    <p-card header="Iniciar Sesión" [style]="{width:'400px'}">
+        <form [formGroup]="loginForm" (ngSubmit)="Login()">
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="text" pInputText class="w-full"
+                       id="email"
+                       formControlName="email" />
+                <small *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="block p-error">
+                    <ng-container *ngIf="loginForm.get('email')?.hasError('required')">
+                        <span>Email es requerido</span>
+                    </ng-container>
+                    <ng-container *ngIf="loginForm.get('email')?.hasError('pattern')">
+                        <span>Email no es válido</span>
+                    </ng-container>
+                </small>
+            </div>
+            <div class="field">
+                <label for="pass">Contraseña</label>
+                <p-password formControlName="password"
+                             [feedback]="false"
+                             [toggleMask]="true"
+                             inputId="pass"
+                             inputStyleClass="w-full"
+                             styleClass="w-full"/>
+                <small *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="block p-error">
+                    <ng-container *ngIf="loginForm.get('password')?.hasError('required')">
+                        <span>Contraseña es requerida</span>
+                    </ng-container>
+                </small>
+            </div>
+            <div class="field">
+                <p-button type="submit" 
+                           styleClass="w-full"
+                           label="Iniciar Sesión"
+                           [disabled]="loginForm.invalid"></p-button>
+            </div>
+            <div class="mt-4">
+                No tienes una cuenta? <a [routerLink]="['/register']">Regístrate</a>
+            </div>            
+        </form>
+    </p-card>
+</div>
+

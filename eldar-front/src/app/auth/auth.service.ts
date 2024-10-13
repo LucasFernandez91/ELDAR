@@ -24,6 +24,11 @@ export class AuthService {
     return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}&password=${password}`);
   }
 
+  // Método para obtener el userId del usuario autenticado
+getCurrentUserId(): number | null {
+  return this.loggedInUser ? this.loggedInUser.id : null; // Devuelve el ID del usuario si está autenticado
+}
+
   // Método para iniciar sesión y almacenar el usuario
 login(email: string, password: string): Observable<boolean> {
   return this.getUserDetail(email, password).pipe(

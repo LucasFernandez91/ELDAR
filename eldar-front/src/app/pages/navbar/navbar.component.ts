@@ -36,12 +36,6 @@ export class NavbarComponent implements OnInit   {
             command: () => this.router.navigate(['/home'])
             
           },
-          {
-            label: 'dashboard',
-            icon: 'pi pi-star',
-            routerLink: '/home/dashboard',
-            command: () => this.router.navigate(['/home/dashboard'])
-        },
          // Agrega el ítem de editar solo si el usuario es admin
       ...(this.authService.getRole() === 'admin' ? [{
         label: 'Editar',

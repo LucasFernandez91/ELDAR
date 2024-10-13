@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+<div style="min-width: 350px; display: flex; justify-content: center; align-items: center; align-self: center;padding: 15px;">
+
+  <div class="card">
+    <p-table [value]="products" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" dataKey="id">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:20%">ID</th>
+          <th style="width:20%">Nombre</th>
+          <th style="width:20%">Descripción</th>
+          <th style="width:20%">Precio</th>
+          <th style="width:20%">Stock</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price | currency: 'USD' }}</td>
+          <td>{{ product.stock }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+</div>

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
+
 import { NavbarComponent } from "../navbar/navbar.component";
+
+import { AuthService } from '../../auth/auth.service';
+
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-home',

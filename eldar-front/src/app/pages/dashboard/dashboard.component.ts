@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product';
+import { CommonModule } from '@angular/common';
+import { Product } from '../../interfaces/index';
 import { FormsModule } from '@angular/forms';
+
+import { ProductService } from '../../services/product.service';
+import { MessageService } from 'primeng/api';
+
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
-import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { MessageService, SelectItem } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
-
-
 import { ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';

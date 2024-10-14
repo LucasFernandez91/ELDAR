@@ -2,14 +2,14 @@
   "users": [
     {
       "fullName": "Admin",
-      "email": "admin@gmail.com",
+      "email": "admin@admin.com",
       "password": "123456",
       "role": "admin",
       "id": 1
     },
     {
       "fullName": "usuario",
-      "email": "user@gmail.com",
+      "email": "user@user.com",
       "password": "123456",
       "role": "user",
       "id": 2
@@ -27,28 +27,10 @@
     {
       "id": 1,
       "name": "Producto 1",
-      "price": 200,
+      "price": 150,
       "description": "Descripcion del producto 1",
       "userId": 1,
-      "stock": 30,
-      "completed": false
-    },
-    {
-      "id": 2,
-      "name": "pantalon",
-      "price": 20,
-      "description": "pantalon rojo",
-      "stock": 20,
-      "userId": 1,
-      "completed": false
-    },
-    {
-      "id": 4,
-      "name": "test 2",
-      "price": 20,
-      "description": "test",
-      "stock": 20,
-      "userId": 1,
+      "stock": 23,
       "completed": false
     }
   ]

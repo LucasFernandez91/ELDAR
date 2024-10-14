@@ -1,16 +1,16 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { AuthService } from '../../auth/auth.service';
+import { MessageService } from 'primeng/api';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { passmisMatchValidator } from '../../shared/directive/pass-masmatch.directive';
-import { RegisterPostData } from '../../interfaces/auth';
-import { AuthService } from '../../auth/auth.service';
-import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -80,10 +80,10 @@ get confirmPassword() {
   return this.registerForm.get('confirmPassword');
 }
 
-// Método para verificar si un control es inválido y ha sido tocado
+
 isInvalid(controlName: string): boolean {
   const control = this.registerForm.get(controlName);
-  return control ? control.invalid && control.touched : false; // Verifica si el control es nulo
+  return control ? control.invalid && control.touched : false; 
 }
 
 

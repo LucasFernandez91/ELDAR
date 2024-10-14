@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/index';
+import { User, RegisterPostData } from '../interfaces/index';
 import { HttpClient } from '@angular/common/http';
-import { RegisterPostData } from '../interfaces/auth';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -41,7 +40,7 @@ login(email: string, password: string): Observable<boolean> {
       return false;
     }),
     catchError(() => {
-      return of(false); // Devuelve false en caso de error
+      return of(false); 
     })
   );
 }

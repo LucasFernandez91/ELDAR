@@ -6,30 +6,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { authGuard } from './auth/auth.guard';
 
-// export const routes: Routes = [
-//   { path: 'login', component: LoginComponent },
-//   { path: 'register', component: RegisterComponent },
-//   { 
-//     path: 'home', 
-//     component: HomeComponent, 
-//     canActivate: [authGuard],  
-//     data: { roles: ['admin', 'user'] } 
-//   },
-//   { 
-//     path: 'dashboard', 
-//     component: DashboardComponent, 
-//     canActivate: [authGuard], 
-//     data: { roles: ['admin', 'user'] } 
-//   },
-//   { 
-//     path: 'admin', 
-//     component: AdminDashboardComponent, 
-//     canActivate: [authGuard], 
-//     data: { roles: ['admin'] } 
-//   },
-//   { path: '', redirectTo: '/login', pathMatch: 'full' }
-// ];
-
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -38,7 +14,7 @@ export const routes: Routes = [
     component: HomeComponent, 
     canActivate: [authGuard],data: { roles: ['admin', 'user'] },
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirige al dashboard por defecto
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] ,data: { roles: ['admin', 'user'] } },     
       { path: 'admin', component: AdminDashboardComponent, canActivate: [authGuard], data: { roles: ['admin'] }}
     ] 

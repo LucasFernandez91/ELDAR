@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MenubarModule } from 'primeng/menubar';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../auth/auth.service';
 import { MenuItem } from 'primeng/api';
+
+import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
-import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple'
 import { ButtonModule } from 'primeng/button';
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
@@ -41,7 +43,7 @@ export class NavbarComponent implements OnInit   {
         label: 'Editar',
         icon: 'pi pi-pencil',
         routerLink: '/home/admin',
-        ommand: () => this.router.navigate(['/home/admin'])  // Ajusta la ruta de edición según tu configuración
+        ommand: () => this.router.navigate(['/home/admin'])  
       }] : [])
     ];
 }

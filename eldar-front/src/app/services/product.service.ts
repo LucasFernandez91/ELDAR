@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../interfaces/product';
+import { Product } from '../interfaces/index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:3000/products'; // Asegúrate de que esta URL sea la correcta
+  private baseUrl = 'http://localhost:3000/products'; 
 
   constructor(private http: HttpClient) {}
 
@@ -23,16 +23,16 @@ export class ProductService {
 
   // Crear un nuevo producto
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl, product); // Asegúrate de que el producto tenga todos los campos necesarios
+    return this.http.post<Product>(this.baseUrl, product); 
   }
 
   // Actualizar un producto
   updateProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${product.id}`, product); // Asegúrate de que el ID sea válido
+    return this.http.put<Product>(`${this.baseUrl}/${product.id}`, product); 
   }
 
   // Eliminar un producto
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`); // Asegúrate de que el ID sea válido
+    return this.http.delete<void>(`${this.baseUrl}/${id}`); 
   }
 }

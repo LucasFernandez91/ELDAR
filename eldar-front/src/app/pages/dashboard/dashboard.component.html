@@ -1,6 +1,6 @@
-<div style="min-width: 350px; display: flex; justify-content: center; align-items: center; align-self: center;padding: 15px;">
+<div class="container-product ">
 
-  <div class="card">
+  <div class="card card-container table-container">
     <p-table [value]="products" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" dataKey="id">
       <ng-template pTemplate="header">
         <tr>
@@ -22,5 +22,5 @@
       </ng-template>
     </p-table>
   </div>
-  
+
 </div>

@@ -1,10 +1,10 @@
 <div class="card">
-  <p-menubar [model]="items">
-      <ng-template pTemplate="start">        
-          <span class="p-text-uppercase">Eldar</span>
+  <p-menubar [model]="items" class="gap-3">
+      <ng-template pTemplate="start" style="margin: 20px;">        
+          <span class="p-text-uppercase mx-4">Eldar</span>
       </ng-template>
-      <ng-template pTemplate="item" let-item let-root="root">
-          <a pRipple class="flex align-items-center p-menuitem-link" [routerLink]="item.routerLink">
+      <ng-template pTemplate="item" let-item let-root="root" >
+          <a pRipple class="flex align-items-center p-menuitem-link mx-3 gap-3" [routerLink]="item.routerLink">
               <span [class]="item.icon"></span>
               <span class="ml-2">{{ item.label }}</span>
               <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
@@ -14,7 +14,7 @@
       </ng-template>
       <ng-template pTemplate="end">
           <div class="flex align-items-center gap-2">
-              <p-button label="Salir" (click)="logout()"></p-button>           
+              <p-button (click)="logout()" severity="warning" [rounded]="true" [text]="true" [raised]="true" icon="pi pi-sign-out"/>        
           </div>
       </ng-template>
   </p-menubar>

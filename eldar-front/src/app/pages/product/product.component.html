@@ -1,122 +1,132 @@
 <!-- Formulario para agregar nuevo producto -->
 
 
-  
-<div style="min-width: 350px; display: flex; justify-content: center; align-items: center; align-self: center;padding: 15px;">
 
-    <div class="p-fluid card">
-      <h3>Añadir Producto</h3>
-      <div class="field">
-        <label for="name">Nombre</label>
-        <input id="name" [(ngModel)]="newProduct.name" pInputText />
-      </div>
-      <div class="field">
-        <label for="price">Precio</label>
-        <input id="price" [(ngModel)]="newProduct.price" pInputText type="number" />
-      </div>
-      <div class="field">
-        <label for="description">Descripción</label>
-        <input id="description" [(ngModel)]="newProduct.description" pInputText />
-      </div>
-      <div class="field">
-        <label for="stock">Stock</label>
-        <input id="stock" [(ngModel)]="newProduct.stock" pInputText type="number" />
-      </div>
-      <button (click)="addProduct()" pButton label="Agregar Producto" class="p-button-success"></button>
+<div class="container-product ">
+
+  <div class="p-fluid card card-container">
+    <h3>Añadir Producto</h3>
+    <div class="field">
+      <label for="name">Nombre</label>
+      <input  id="name" aria-describedby="name-help" [(ngModel)]="newProduct.name" pInputText />
+      <small id="name-help">
+        Ingresa nombre del producto
+    </small>
     </div>
+    <div class="field">
+      <label for="price">Precio</label>
+      <input id="price" aria-describedby="price-help"  [(ngModel)]="newProduct.price" pInputText type="number" />
+      <small id="price-help">
+        Ingresa precio del producto
+    </small>
+    </div>
+    <div class="field">
+      <label for="description">Descripción</label>
+      <input id="description" aria-describedby="description-help" [(ngModel)]="newProduct.description" pInputText />
+      <small id="description-help">
+        Ingresa descripcion del producto
+    </small>
+    </div>
+    <div class="field">
+      <label for="stock">Stock</label>
+      <input id="stock" aria-describedby="stock-help" [(ngModel)]="newProduct.stock" pInputText type="number" />
+      <small id="stock-help">
+        Ingresa descripcion del producto
+    </small>
+    </div>
+    <button (click)="addProduct()" pButton label="Agregar Producto" class="p-button-success"></button>
+  </div>
 </div>
 
-  <!-- Tabla de productos -->
-  <div style="min-width: 350px; display: flex; justify-content: center; align-items: center; align-self: center;padding: 15px;">
+<!-- Tabla de productos -->
+<div class="container-product ">
 
-    <div class="card">
-      <p-toast></p-toast>
-      <p-table [value]="products" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" dataKey="id"
-        editMode="row" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="width:20%">ID</th> 
-            <th style="width:20%">Nombre</th>
-            <th style="width:20%">Descripción</th> 
-            <th style="width:20%">Precio</th>
-            <th style="width:20%">Stock</th> 
-            <th style="width:20%"></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
-          <tr [pEditableRow]="product">
-            <td>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="text" [(ngModel)]="product.id" disabled />
-                  <!-- ID visible pero no editable -->
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{product.id}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="text" [(ngModel)]="product.name" required />
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{product.name}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="text" [(ngModel)]="product.description" /> <!-- Descripción -->
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{product.description}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="number" [(ngModel)]="product.price" />
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{product.price | currency: 'USD'}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="number" [(ngModel)]="product.stock" /> <!-- Stock -->
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{product.stock}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td>
-              <div class="flex align-items-center justify-content-center gap-2">
+  <div class="card card-container table-container">
+    <p-toast></p-toast>
+    <p-table 
+    [value]="products" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]" dataKey="id"
+      editMode="row" [responsiveLayout]="'scroll'" [tableStyle]="{'min-width': '50rem'}" [breakpoint]="'960px'">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:20%">ID</th>
+          <th style="width:20%">Nombre</th>
+          <th style="width:20%">Descripción</th>
+          <th style="width:20%">Precio</th>
+          <th style="width:20%">Stock</th>
+          <th style="width:20%"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="product">
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input  pInputText type="text" [(ngModel)]="product.id" disabled />
+                <!-- ID visible pero no editable -->
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{product.id}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input   pInputText type="text" [(ngModel)]="product.name" required />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{product.name}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input  pInputText type="text" [(ngModel)]="product.description" /> <!-- Descripción -->
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{product.description}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input  pInputText type="number" [(ngModel)]="product.price" />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{product.price | currency: 'USD'}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input  pInputText type="number" [(ngModel)]="product.stock" /> <!-- Stock -->
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{product.stock}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <div class="flex align-items-center justify-content-center gap-2">
 
-                <p-button *ngIf="!editing" pInitEditableRow value="Edit"
-                  (click)="onRowEditInit(product)" class="p-button-rounded p-button-text" [rounded]="true"  [outlined]="true" > Editar </p-button> 
+              <p-button *ngIf="!editing" pInitEditableRow (click)="onRowEditInit(product)"
+                class="p-button-rounded p-button-text" [rounded]="true" [outlined]="true" severity="info" icon="pi pi-pencil"/>
 
-                <p-button *ngIf="editing" [rounded]="true"  [outlined]="true" pSaveEditableRow value="Save"
-                  (click)="onRowEditSave(product)" class="p-button-rounded p-button-text p-button-success mr-2" > guardar </p-button> 
-                  
-                  <p-button [rounded]="true"  [outlined]="true" type="button" icon="pi pi-trash" (click)="deleteProduct(product)" class="p-button-rounded p-button-danger" 
-                  label="Eliminar"></p-button>
+              <p-button *ngIf="editing" pSaveEditableRow (click)="onRowEditSave(product)"   
+                class="p-button-rounded p-button-text" [rounded]="true" [outlined]="true" icon="pi pi-check"  severity="success"/>
 
-                <p-button *ngIf="editing" [rounded]="true"  [outlined]="true" pCancelEditableRow value="Cancel"
-                  (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text p-button-danger" > cancelar</p-button> 
+              <p-button [rounded]="true" (click)="deleteProduct(product)"
+                 class="p-button-rounded p-button-text" [rounded]="true" [outlined]="true"  icon="pi pi-trash" severity="danger"/>
 
-              </div>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+              <p-button *ngIf="editing" [rounded]="true" severity="danger" [outlined]="true" pCancelEditableRow (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text p-button-danger"  icon="pi pi-times"/>
+
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-
-
+</div>
